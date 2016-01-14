@@ -1,0 +1,15 @@
+language: python
+branches:
+  only:
+    - master
+before_install:
+  - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended"
+install:
+  - pip install ghp-import
+script:
+  - make clean
+  - make build
+  - make github
+env:
+  global:
+    - secure: "TLr8Z+UOeuBQPSjACDq/NpPXyzBRl14U1qdPhaRbPaUYHBe891zjDkc/Gk4G2QmTIKbqU0QKVNudPlNcD1hSW4V7h8Kzlnik6zWoIFUPUZdckp4PxS+LEAtvLBgqH69DxLwNBaO2yjA2MnGG8xRxUlLbP2bFBT2m/4PhxrHPVEK7Coy/FVbrdqnzTtLBCfgaNsJ20Kib2tkiE3NOzoThDh6+VNWKLprBs7mYNOvoyyvdgQqUIang/ywovc9C8W5IUqMloNY7oaVt7CqW+lb7tipIojtbD0MrhSYiAC8eUUDqhJo+OUgtGHS2UUNMopvarSso9DyR5FAYu8RsmGkL69QQs5lVJ+3xcjRVb4XK6ExDuCBb9tu7G/HviV+bNT0X++g9B3WGJ63TelDyJkt2gSIaEIL5ZPOI/3WSZmynXO1/cDcjjHQuElWBAETXoJFa0kbijTOBGe43xFCcl89UJoQmPnZBghGkFpPxcXwOXKDYjp/C8n8oZOKXlglMavqFYdQa2kjqro9TRbb97KYlD3c+WVxjHFNmaioHdL4tcyXPj9gDxv9268hkiMANu7RlWCja9p6U88f4t0qmq/HQiA4pboP1TBqM9SYXaEmutz/9S3uKZBr2l+xDduXN+E9fARmFyIhFDALGQXC/IwTzka5tWwdyipv4Cxf/xzqtQ54="
