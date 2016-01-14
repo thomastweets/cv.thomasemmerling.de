@@ -1,4 +1,5 @@
 TEXFILE = CV_ThomasEmmerling.tex
+PDFFILE = CV_ThomasEmmerling.pdf
 
 BASEDIR=$(CURDIR)
 OUTPUTDIR=$(BASEDIR)/output
@@ -21,7 +22,7 @@ clean:
 build:
 	mkdir $(OUTPUTDIR)
 	sudo docker run -it -v $(BASEDIR):/var/texlive texlive sh -c "pdflatex $(TEXFILE)"
-	mv cv.pdf $(OUTPUTDIR)
+	mv $(PDFFILE) $(OUTPUTDIR)
 	cp CNAME $(OUTPUTDIR)
 	cp index.html $(OUTPUTDIR)
 
