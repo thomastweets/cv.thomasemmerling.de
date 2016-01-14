@@ -1,19 +1,12 @@
-PY?=python
-
-TEX = pandoc
-TEXFILE = template.tex
-CONTENTFILE = details.yml
-FLAGS = --latex-engine=xelatex
+TEXFILE = CV_ThomasEmmerling.tex
 
 BASEDIR=$(CURDIR)
-INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/output
-OUTPUTFILE=$(OUTPUTDIR)/CV_ThomasEmmerling.pdf
 
 GITHUB_PAGES_BRANCH=master
 
 help:
-	@echo 'Makefile for a pelican Web site                                           '
+	@echo 'Makefile for automatic LaTeX compilation                                  '
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
 	@echo '   make clean                          remove the generated files         '
@@ -27,8 +20,10 @@ clean:
 
 build:
 	mkdir $(OUTPUTDIR)
-	sudo docker run -it -v $(BASEDIR):/var/texlive texlive sh -c "pdflatex cv.tex"
+	sudo docker run -it -v $(BASEDIR):/var/texlive texlive sh -c "pdflatex $(TEXFILE)"
 	mv cv.pdf $(OUTPUTDIR)
+	cp CNAME $(OUTPUTDIR)
+	cp index.html $(OUTPUTDIR)
 
 github:
 	ghp-import -n $(OUTPUTDIR)
