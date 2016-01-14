@@ -27,7 +27,8 @@ clean:
 
 build:
 	mkdir $(OUTPUTDIR)
-	$(TEX) $(CONTENTFILE) -o $(OUTPUTFILE) --template=$(TEXFILE) $(FLAGS)
+	sudo docker run -it -v $(BASEDIR):/var/texlive texlive sh -c "pdflatex cv.tex"
+	mv cv.pdf $(OUTPUTDIR)
 
 github:
 	ghp-import -n $(OUTPUTDIR)
