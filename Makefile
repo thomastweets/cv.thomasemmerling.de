@@ -17,7 +17,7 @@ help:
 	@echo '                                                                          '
 	@echo 'Usage:                                                                    '
 	@echo '   make clean                          remove the generated files         '
-	@echo '   make publish                        generate using production settings '
+	@echo '   make build	                        generate files										 '
 	@echo '   make github                         upload the web site via gh-pages   '
 	@echo '                                                                          '
 
@@ -25,7 +25,7 @@ help:
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
-publish:
+build:
 	mkdir $(OUTPUTDIR)
 	$(TEX) $(CONTENTFILE) -o $(OUTPUTFILE) --template=$(TEXFILE) $(FLAGS)
 
@@ -33,4 +33,4 @@ github: publish
 	ghp-import -n $(OUTPUTDIR)
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 
-.PHONY: help clean publish github
+.PHONY: help clean build github
