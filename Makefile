@@ -29,7 +29,7 @@ build:
 	mkdir $(OUTPUTDIR)
 	$(TEX) $(CONTENTFILE) -o $(OUTPUTFILE) --template=$(TEXFILE) $(FLAGS)
 
-github: publish
+github: build
 	ghp-import -n $(OUTPUTDIR)
 	@git push -fq https://${GH_TOKEN}@github.com/$(TRAVIS_REPO_SLUG).git gh-pages > /dev/null
 
